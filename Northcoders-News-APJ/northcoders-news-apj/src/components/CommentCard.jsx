@@ -11,14 +11,14 @@ class CommentCard extends Component {
     return (
       <div className="CommentCard">
         <h5>
-          votes : {this.props.comment.votes} <br /> posted on {createdOn} at{" "}
-          {createdAt}
+          posted on {createdOn} at {createdAt} by {this.props.comment.author}
         </h5>
 
         <h4>{this.props.comment.body}</h4>
         <Voter
           comment_id={this.props.comment.comment_id}
           votes={this.props.comment.votes}
+          type="comments"
         />
       </div>
     );

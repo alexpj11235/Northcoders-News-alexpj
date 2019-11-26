@@ -3,6 +3,7 @@ import * as api from "../utilities/api";
 import Header from "./Header";
 import Nav from "./Nav";
 import { Link } from "@reach/router";
+import Voter from "./Voter";
 
 class Home extends Component {
   state = {
@@ -36,14 +37,21 @@ class Home extends Component {
             <Nav className="Header" />
             {this.state.articles.map(article => {
               return (
-                <h2 key={article.article_id} className="HomeArticle">
+                <h3 key={article.article_id} className="HomeArticle">
                   <Link to={`/articles/${article.article_id}`}>
                     {article.title}
                   </Link>
+                  <h4>
+                    author: {article.author} <br /> comment count:
+                    {article.comment_count}
+                  </h4>
+                  <Voter
+                    id={article.article_id}
+                    votes={article.votes}
+                    type="articles"
+                  />
                   <br />
-                  author: {article.author} votes: {article.votes} comments:{" "}
-                  {article.comment_count}
-                </h2>
+                </h3>
               );
             })}
             }

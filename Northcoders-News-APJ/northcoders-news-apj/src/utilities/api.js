@@ -37,10 +37,11 @@ exports.fetchCommentsByArticleId = article_id => {
 };
 
 exports.voteChanger = (id, vote, type) => {
-  const params = { params: { inc_votes: vote } };
   console.log(vote, "<<<<<<<<<vote");
   return axios
-    .patch(`https://apj-nc-news.herokuapp.com/api/${type}/${id}`, params)
+    .patch(`https://apj-nc-news.herokuapp.com/api/${type}/${id}`, {
+      inc_votes: vote
+    })
     .then(response => {
       return response.data;
     });

@@ -10,7 +10,7 @@ class Voter extends Component {
     const currentVotes = +this.state.voted + +event.target.name;
 
     this.setState({ voted: currentVotes });
-    api.voteChanger(this.props.comment_id, this.state.voted, "comments");
+    api.voteChanger(this.props.id, +event.target.name, this.props.type);
   };
 
   render() {
