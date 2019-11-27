@@ -20,7 +20,7 @@ class Voter extends Component {
         <button
           onClick={this.handleClick}
           name="1"
-          disabled={this.state.voted > 0}
+          disabled={this.state.voted > 0 || this.props.id === 999}
         >
           upvote
         </button>
@@ -28,7 +28,7 @@ class Voter extends Component {
         <button
           onClick={this.handleClick}
           name="-1"
-          disabled={this.state.voted < 0}
+          disabled={this.state.voted < 0 || this.props.id === 999}
         >
           downvote
         </button>

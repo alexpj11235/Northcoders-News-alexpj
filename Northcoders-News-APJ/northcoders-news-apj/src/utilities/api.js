@@ -8,8 +8,8 @@ exports.fetchTopics = () => {
     });
 };
 
-exports.fetchAllArticles = props => {
-  const params = { params: { topic: props } };
+exports.fetchAllArticles = (topic, sort_by, order) => {
+  const params = { params: { topic, sort_by, order } };
   console.log(params, " params in fetch");
   return axios
     .get("https://apj-nc-news.herokuapp.com/api/articles", params)
@@ -37,7 +37,6 @@ exports.fetchCommentsByArticleId = article_id => {
 };
 
 exports.voteChanger = (id, vote, type) => {
-  console.log(vote, "<<<<<<<<<vote");
   return axios
     .patch(`https://apj-nc-news.herokuapp.com/api/${type}/${id}`, {
       inc_votes: vote
@@ -45,4 +44,22 @@ exports.voteChanger = (id, vote, type) => {
     .then(response => {
       return response.data;
     });
+};
+
+exports.PostComment = (article_id, username = "tickle122", body) => {
+  return axios
+    .post(
+      `https://apj-nc-news.herokuapp.com/api/articles/${article_id}/comments`,
+      {
+        username,
+        body
+      }
+    )
+    .then(response => {
+      return response.data;
+    });
+};
+
+exports.DeleteCom = id => {
+  return axios.delete(`https://apj-nc-news.herokuapp.com/api/comments/${id}`);
 };
