@@ -44,7 +44,7 @@ class Article extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Article">
         {this.state.isLoading ? (
           <p>Loading...</p>
         ) : (

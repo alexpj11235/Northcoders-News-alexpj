@@ -21,12 +21,19 @@
 
 .HomeArticle {
   border-style: solid;
-  border-color: rgb(255, 0, 200);
+  border-color: grey;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 10px 10px 5px grey;
+  background-color: rgb(228, 232, 255);
 }
 
 .CommentCard {
   border-style: solid;
-  border-color: green;
+  border-color: grey;
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px grey;
+  background-color: rgb(221, 236, 226);
 }
 
 /* .Voter {

@@ -33,29 +33,35 @@ class Voter extends Component {
 
         <div className="VoteBox">
           <div></div>
-          <img
-            className="DownVote"
-            onClick={this.handleClick}
-            name="-1"
-            disabled={this.state.voted < 0 || this.props.id === "new"}
-            src={UNCNLogo}
-            alt="Downvote"
-            width="30"
-            height="30"
-          />
+          {this.state.voted > -1 && this.props.id !== "new" ? (
+            <img
+              className="DownVote"
+              onClick={this.handleClick}
+              name="-1"
+              src={UNCNLogo}
+              alt="Downvote"
+              width="30"
+              height="30"
+            />
+          ) : (
+            <div></div>
+          )}
 
           <h3 className="Votes">{votes}</h3>
 
-          <img
-            className="UpVote"
-            onClick={this.handleClick}
-            name="1"
-            disabled={this.state.voted > 0 || this.props.id === "new"}
-            src={NCNLogo}
-            alt="Upvote"
-            width="30"
-            height="30"
-          />
+          {this.state.voted < 1 && this.props.id !== "new" ? (
+            <img
+              className="UpVote"
+              onClick={this.handleClick}
+              name="1"
+              src={NCNLogo}
+              alt="Upvote"
+              width="30"
+              height="30"
+            />
+          ) : (
+            <div></div>
+          )}
           <div></div>
         </div>
       </div>
