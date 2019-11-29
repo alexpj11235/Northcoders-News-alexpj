@@ -3,10 +3,14 @@ import * as api from "../utilities/api";
 
 class PostComment extends Component {
   state = {
-    username: "grumpy19",
+    username: "",
     comment: "",
     notHidden: true
   };
+
+  componentDidMount() {
+    this.setState({ username: localStorage.getItem("user") || "" });
+  }
 
   Unhide = () => {
     this.setState({ notHidden: !this.state.notHidden });
@@ -31,10 +35,14 @@ class PostComment extends Component {
   };
 
   render() {
+    const user = localStorage.getItem("user") || null;
     return (
       <div>
+        {user === null ? <div>Login to post comments</div> : <div></div>}
         {this.state.notHidden ? (
-          <button onClick={this.Unhide}>Post a comment</button>
+          <button onClick={this.Unhide} disabled={user === null}>
+            Post a comment
+          </button>
         ) : (
           <div />
         )}
@@ -45,6 +53,7 @@ class PostComment extends Component {
           <form onSubmit={this.handleSubmit}>
             comment :
             <textarea
+              required
               className="BigBox"
               name="BigBox"
               onChange={this.handleInput}

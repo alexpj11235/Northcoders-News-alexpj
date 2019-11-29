@@ -3,6 +3,9 @@ import Voter from "./Voter";
 import DeleteComment from "./DeleteComment";
 
 class CommentCard extends Component {
+  state = {
+    post: 0
+  };
   componentDidMount() {}
 
   render() {
@@ -15,6 +18,12 @@ class CommentCard extends Component {
 
     return (
       <div className="CommentCard">
+        <Voter
+          id={this.props.comment.comment_id}
+          votes={this.props.comment.votes}
+          type="comments"
+        />
+        <br />
         <h5>
           {createdOn} {createdAt} by {this.props.comment.author}
         </h5>
@@ -26,19 +35,12 @@ class CommentCard extends Component {
         ) : (
           <div></div>
         )}
-        <div>
-          <DeleteComment
-            id={this.props.comment.comment_id}
-            HandleDelete={this.props.HandleDelete}
-            disabled={this.props.comment.comment_id === 999}
-          />
-          <Voter
-            id={this.props.comment.comment_id}
-            votes={this.props.comment.votes}
-            type="comments"
-            disabled={this.props.comment.comment_id === 999}
-          />
-        </div>
+
+        <DeleteComment
+          id={this.props.comment.comment_id}
+          HandleDelete={this.props.HandleDelete}
+          username={this.props.comment.author}
+        />
       </div>
     );
   }

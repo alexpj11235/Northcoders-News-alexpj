@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import * as api from "../utilities/api";
-import Header from "./Header";
+
 import Nav from "./Nav";
 import { Link } from "@reach/router";
 import Voter from "./Voter";
-import UserContext from "./UserContext";
+
+import Login from "./Login";
 
 class Home extends Component {
   state = {
@@ -17,10 +18,7 @@ class Home extends Component {
     user: ""
   };
 
-  static contextType = UserContext;
-
   componentDidMount() {
-    console.log(this.props, "<<<<<<<<<<home props");
     this.setState({ user: this.context });
     api.fetchAllArticles().then(({ articles }) => {
       this.setState({ articles, isLoading: false });
@@ -64,12 +62,14 @@ class Home extends Component {
           <p>Loading...</p>
         ) : (
           <div>
-            <form id="login" onSubmit={this.props.HandleLogin}>
-              username:
-              <input type="text"></input>
-              <button>Login</button>
-            </form>
-            <Header className="Header" />
+            <Link to={`/`}>
+              {" "}
+              <h2 className="NCnews">NorthCoders News </h2>
+            </Link>
+            <Login
+              loginUser={this.props.loginUser}
+              HandleLogin={this.props.HandleLogin}
+            />
             <Nav />
             <button onClick={this.OptionsClick}>Sort options</button>
             <br />
@@ -78,7 +78,7 @@ class Home extends Component {
             ) : (
               <form>
                 <p>sort articles by:</p>
-                <fieldset id="group1">
+                <fieldset id="group1" className="Sorts">
                   comment count:{" "}
                   <input
                     onChange={this.HandleChange}
@@ -114,7 +114,7 @@ class Home extends Component {
                 <br />
                 <br />
                 order:
-                <fieldset id="group2">
+                <fieldset id="group2" className="Sorts">
                   ascending:{" "}
                   <input
                     onChange={this.HandleChange}
@@ -138,7 +138,10 @@ class Home extends Component {
               return (
                 <div key={article.article_id} className="HomeArticle">
                   <h2>
-                    <Link to={`/articles/${article.article_id}`}>
+                    <Link
+                      className="ArticleLink"
+                      to={`/articles/${article.article_id}`}
+                    >
                       {article.title}
                     </Link>
                   </h2>

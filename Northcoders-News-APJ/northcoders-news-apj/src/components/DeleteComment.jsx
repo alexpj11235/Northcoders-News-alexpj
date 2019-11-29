@@ -8,9 +8,14 @@ class DeleteComment extends Component {
   };
 
   render() {
+    const user = localStorage.getItem("user") || null;
     return (
       <div>
-        <button onClick={this.HandleClick} disabled={this.props.id === 999}>
+        <button
+          className="DeleteButton"
+          onClick={this.HandleClick}
+          disabled={this.props.id === "new" || this.props.username !== user}
+        >
           Delete comment
         </button>
       </div>

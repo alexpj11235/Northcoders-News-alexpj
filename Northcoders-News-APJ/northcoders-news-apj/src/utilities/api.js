@@ -63,3 +63,12 @@ exports.PostComment = (article_id, username = "tickle122", body) => {
 exports.DeleteCom = id => {
   return axios.delete(`https://apj-nc-news.herokuapp.com/api/comments/${id}`);
 };
+
+exports.fetchUser = name => {
+  console.log(name, "<<<name in util");
+  return axios
+    .get(`https://apj-nc-news.herokuapp.com/api/users/${name}`)
+    .then(response => {
+      return response.data;
+    });
+};
