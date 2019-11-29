@@ -4,6 +4,7 @@ import { Router } from "@reach/router";
 
 import Home from "./components/Home";
 import Article from "./components/Article";
+import ErrorPage from "./components/ErrorPage";
 
 import "./App.css";
 
@@ -42,7 +43,7 @@ class App extends Component {
             path="/articles/:article_id"
           />
         </Router>
-        {/* <ErrorPage default /> */}
+        <ErrorPage default />
       </div>
     );
   }
