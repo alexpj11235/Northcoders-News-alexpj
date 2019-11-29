@@ -42,8 +42,8 @@ class App extends Component {
             HandleLogin={this.HandleLogin}
             path="/articles/:article_id"
           />
+          <ErrorPage default />
         </Router>
-        <ErrorPage default />
       </div>
     );
   }
