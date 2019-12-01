@@ -1,0 +1,104 @@
+.App {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  background-color: lightgrey;
+}
+
+.NCnews {
+  border-style: solid;
+  border-color: red;
+}
+
+.Nav {
+  border-style: solid;
+  border-color: grey;
+
+  box-shadow: 10px 10px 5px grey;
+  background-color: rgb(228, 232, 255);
+}
+
+.Header {
+  border-style: solid;
+  border-color: blue;
+}
+
+.HomeArticle {
+  border-style: solid;
+  border-color: grey;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 10px 10px 5px grey;
+  background-color: rgb(228, 232, 255);
+}
+
+.CommentCard {
+  border-style: solid;
+  border-color: grey;
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px grey;
+  background-color: rgb(221, 236, 226);
+}
+
+/* .Voter {
+  border-style: solid;
+  border-color: turquoise;
+} */
+
+.BigBox {
+  text-align: top;
+  width: 500px;
+  height: 100px;
+
+  border: 1px solid red;
+}
+
+.DeleteButton {
+  background-color: powderblue;
+
+  transition: background-color 0.5s;
+}
+
+.DeleteButton:hover {
+  background-color: gold;
+  color: red;
+}
+
+.UpVote {
+  box-shadow: 10px 10px 5px grey;
+  transition: background-color 0.5s;
+}
+
+.UpVote:hover {
+  color: #fdec6e;
+  text-shadow: 0px 0px 30px #fdec6e;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.Sorts:hover {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+  box-shadow: 0px 0px 30px 0px rgba(0, 255, 0, 0.67);
+}
+
+.DownVote {
+  box-shadow: 10px 10px 5px grey;
+}
+
+.VoteBox {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr repeat(3, 50px) 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.Topics {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 20%) 1fr;
+}
