@@ -10,7 +10,6 @@ exports.fetchTopics = () => {
 
 exports.fetchAllArticles = (topic, sort_by, order) => {
   const params = { params: { topic, sort_by, order } };
-  console.log(params, " params in fetch");
   return axios
     .get("https://apj-nc-news.herokuapp.com/api/articles", params)
     .then(response => {

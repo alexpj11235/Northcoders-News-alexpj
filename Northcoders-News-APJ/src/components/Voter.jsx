@@ -30,7 +30,6 @@ class Voter extends Component {
         ) : (
           <div></div>
         )}
-
         <div className="VoteBox">
           <div></div>
           {this.state.voted > -1 && this.props.id !== "new" ? (
@@ -46,9 +45,7 @@ class Voter extends Component {
           ) : (
             <div></div>
           )}
-
-          <h3 className="Votes">{votes}</h3>
-
+          <h3 className="numberCircle">{votes} </h3>
           {this.state.voted < 1 && this.props.id !== "new" ? (
             <img
               className="UpVote"

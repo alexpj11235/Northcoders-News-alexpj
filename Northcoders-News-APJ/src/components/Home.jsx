@@ -15,13 +15,20 @@ class Home extends Component {
     OptionsHide: true,
     sort_by: "created_at",
     order: "desc",
-    user: ""
+    user: "",
+    recent: false,
+    descending: false
   };
 
   componentDidMount() {
     this.setState({ user: this.context });
     api.fetchAllArticles().then(({ articles }) => {
-      this.setState({ articles, isLoading: false });
+      this.setState({
+        articles,
+        isLoading: false,
+        recent: true,
+        descending: true
+      });
     });
   }
 
@@ -49,9 +56,15 @@ class Home extends Component {
 
   HandleChange = event => {
     if (event.target.name === "group1") {
-      this.setState({ sort_by: event.target.value });
+      this.setState({ sort_by: event.target.value, recent: false });
+      if (event.target.value === "created_at") {
+        this.setState({ recent: true });
+      }
     } else {
-      this.setState({ order: event.target.value });
+      this.setState({ order: event.target.value, descending: false });
+      if (event.target.value === "desc") {
+        this.setState({ descending: true });
+      }
     }
   };
 
@@ -63,14 +76,14 @@ class Home extends Component {
         ) : (
           <div>
             <Link to={`/`}>
-              {" "}
-              <h2 className="NCnews">NorthCoders News </h2>
+              <h1 className="NCnews">NorthCoders News Home</h1>
             </Link>
             <Login
               loginUser={this.props.loginUser}
               HandleLogin={this.props.HandleLogin}
             />
             <Nav />
+            <h1>Articles</h1>
             <button onClick={this.OptionsClick}>Sort options</button>
             <br />
             {this.state.OptionsHide ? (
@@ -89,6 +102,7 @@ class Home extends Component {
                   <br />
                   most recent:{" "}
                   <input
+                    checked={this.state.recent}
                     onChange={this.HandleChange}
                     type="radio"
                     name="group1"
@@ -124,6 +138,7 @@ class Home extends Component {
                   />
                   descending:{" "}
                   <input
+                    checked={this.state.descending}
                     onChange={this.HandleChange}
                     type="radio"
                     name="group2"
@@ -132,6 +147,8 @@ class Home extends Component {
                 </fieldset>
               </form>
             )}
+
+            <h3>Click title for individual article page with comments</h3>
             {this.state.articles.map(article => {
               const createdOn = article.created_at.slice(0, 10);
               const createdAt = article.created_at.slice(11, 16);
@@ -148,7 +165,7 @@ class Home extends Component {
 
                   <h4>
                     posted on {createdOn} at {createdAt} by {article.author}{" "}
-                    <br /> comment count:
+                    <br /> comment-count:
                     {article.comment_count}
                   </h4>
                   <Voter
@@ -156,7 +173,6 @@ class Home extends Component {
                     votes={article.votes}
                     type="articles"
                   />
-                  <br />
                 </div>
               );
             })}

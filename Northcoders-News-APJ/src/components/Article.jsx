@@ -49,6 +49,9 @@ class Article extends Component {
           <p>Loading...</p>
         ) : (
           <div>
+            <Link to={`/`}>
+              <h1 className="NCnews">NorthCoders News Home</h1>
+            </Link>
             <Link to={`/topics/${this.state.article.topic}`}>
               back to {this.state.article.topic}
             </Link>
